@@ -29,14 +29,14 @@
   /* Font and Typography */
   /* .5rem = 8px | 1rem = 16px */
   --body-font: 'Outfit', sans-serif;
-  --biggest-font-size: 1.75rem;
-  --h1-font-size: 1.5rem;
-  --h2-font-size: 1.25rem;
-  --h3-font-size: 1rem;
-  --normal-font-size: 0.938rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
-  --tiny-font-size: .625rem;
+  --biggest-font-size: 2rem;
+  --h1-font-size: 1.75rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1.2rem;
+  --small-font-size: 1rem;
+  --smaller-font-size: 1rem;
+  --tiny-font-size: .7rem;
   
   /* font weight */
   --font-medium: 500;
@@ -1001,7 +1001,7 @@ body.light-theme {
 
 @media screen and (min-width: 767px) {
   .work__container {
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(2);
   }
 
   .contact__container {
