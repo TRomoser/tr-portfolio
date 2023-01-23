@@ -524,20 +524,20 @@
           <div class="contact__content">
             <h3 class="contact__title">Write me a message</h3>
 
-            <form action="mailto:taylorromoser@gmail.com" class="contact__form"></form>
+            <form action="mailto:taylorromoser@gmail.com" method="post" enctype="text/plain" class="contact__form"></form>
             <div class="contact__form-div">
               <label for="" class="contact__form-tag">From</label>
-              <input type="text" placeholder="Your name" class="contact__form-input">
+              <input type="text" name="name" placeholder="Your name" class="contact__form-input">
             </div>
 
             <div class="contact__form-div">
               <label for="" class="contact__form-tag">Mail</label>
-              <input type="email" placeholder="Your email address" class="contact__form-input">
+              <input type="email" name="email" placeholder="Your email address" class="contact__form-input">
             </div>
             
             <div class="contact__form-div contact__form-area">
               <label for="" class="contact__form-tag">Project</label>
-              <textarea name="" id="" cols="30" rows="10" placeholder="Write me a message" class="contact__form-input"></textarea>
+              <textarea name="message" id="" cols="30" rows="10" placeholder="Write me a message" class="contact__form-input"></textarea>
             </div>
 
             <button class="button">Send Message</button>
