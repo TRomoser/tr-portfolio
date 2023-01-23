@@ -524,24 +524,30 @@
           <div class="contact__content">
             <h3 class="contact__title">Write me a message</h3>
 
-            <form action="mailto:taylorromoser@gmail.com" method="post" enctype="text/plain" class="contact__form"></form>
-            <div class="contact__form-div">
-              <label for="" class="contact__form-tag">From</label>
-              <input type="text" name="name" placeholder="Your name" class="contact__form-input">
-            </div>
+            <form class="contact__form" id="contact-form">
+              <div class="contact__form-div">
+                <input type="hidden" name="contact_number">
+                <label for="" class="contact__form-tag">From</label>
+                <input type="text" name="user_name" placeholder="Your name" class="contact__form-input"
+                id="erase-content">
+              </div>
 
-            <div class="contact__form-div">
-              <label for="" class="contact__form-tag">Mail</label>
-              <input type="email" name="email" placeholder="Your email address" class="contact__form-input">
-            </div>
-            
-            <div class="contact__form-div contact__form-area">
-              <label for="" class="contact__form-tag">Project</label>
-              <textarea name="message" id="" cols="30" rows="10" placeholder="Write me a message" class="contact__form-input"></textarea>
-            </div>
+              <div class="contact__form-div">
+                <label for="" class="contact__form-tag">Mail</label>
+                <input type="email" name="user_email" placeholder="Your email address" class="contact__form-input"
+                id="erase-content">
+              </div>
+              
+              <div class="contact__form-div contact__form-area">
+                <label for="" class="contact__form-tag">Project</label>
+                <textarea name="message" id="erase-content" cols="30" rows="10" placeholder="Write me a message" class="contact__form-input"></textarea>
+              </div>
 
-            <button class="button" type="submit" value="Send">Send Message</button>
-          </div>
+              <button class="button" type="submit"
+              onclick="document.getElementById('erase-content').value = ''"
+              value="Send">Send Message</button>
+            </div>
+          </form>
         </div>
       </section>
     </main>
@@ -585,5 +591,7 @@
     <script src="js/mixitup.min.js"></script>
     <!-- Main JS -->
     <script src="js/main.js"></script>
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   </body>
 </html>
