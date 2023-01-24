@@ -435,6 +435,8 @@ body.light-theme {
   width: 220px;
   border-radius: 1.5rem;
   justify-self: center;
+  -webkit-mask-image: linear-gradient(#000, rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(#000, rgba(0, 0, 0, 0));
 }
 
 .about__data {
@@ -1012,6 +1014,7 @@ body.light-theme {
       grid-template-columns: repeat(2, max-content);
     }
   }
+  
     .container {
     margin-left: auto;
     margin-right: auto;
