@@ -123,7 +123,10 @@
             </div>
             <p class="about__description">
               <!-- Description Here -->
-              As a full-stack software engineer with a passion for the logic and elegance of code, I am excited to bring my unique perspective and customer service skills to the world of software development. With my background in customer service, I understand the importance of creating a dynamic and positive user experience. I am eager to continue learning and growing as a developer, and I am confident that my unique blend of skills and experiences make me a strong candidate for any software development role. Whether it's troubleshooting technical issues or developing engaging and user-friendly applications, I am ready to take on new challenges and make a meaningful contribution to my clients and peers.
+              As a full-stack software engineer with a passion for the logic and elegance of code, I am excited to bring my unique perspective and customer service skills to the world of software development. With my background in customer service, I understand the importance of creating a dynamic and positive user experience.
+              <br>
+              <br>
+              I am eager to continue learning and growing as a developer, and I am confident that my unique blend of skills and experiences make me a strong candidate for any software development role. Whether it's troubleshooting technical issues or developing engaging and user-friendly applications, I am ready to take on new challenges and make a meaningful contribution to my clients and peers.
             </p>
             <a href="#contact" class="button">Contact Me</a>
           </div>
@@ -376,7 +379,7 @@
               <div class="services__modal-content">
                 <i class='bx bx-x services__modal-close' ></i>
 
-                <h3 class="services_modal-title">DevOps Engineer</h3>
+                <h3 class="services_modal-title">Full-Stack Developer</h3>
                 <p class="services__modal-description">
                   I handle the deployment, monitoring, and maintenance of web and mobile applications, this includes tasks such as configuring and maintaining the production and development environments, creating and testing the deployment scripts, and monitoring the application after deployment to ensure it is running smoothly.
                 </p>
@@ -502,7 +505,7 @@
       <!-- Contact -->
       <section class="contact section" id="contact">
         <span class="section__subtitle">Get in touch</span>
-        <h2 class="section__titke">Contact Me</h2>
+        <h2 class="section__title">Contact Me</h2>
 
         <div class="contact__container container grid">
           <div class="contact__content">
@@ -527,23 +530,22 @@
               <div class="contact__form-div">
                 <input type="hidden" name="contact_number">
                 <label for="" class="contact__form-tag">From</label>
-                <input type="text" name="user_name" placeholder="Your name" class="contact__form-input"
-                id="erase-content">
+                <input type="text" name="from_name" placeholder="Your name" class="contact__form-input"
+                id="name">
               </div>
 
               <div class="contact__form-div">
                 <label for="" class="contact__form-tag">Mail</label>
                 <input type="email" name="user_email" placeholder="Your email address" class="contact__form-input"
-                id="erase-content">
+                id="email">
               </div>
               
               <div class="contact__form-div contact__form-area">
                 <label for="" class="contact__form-tag">Message</label>
-                <textarea name="message" id="erase-content" cols="30" rows="10" placeholder="Write me a message" class="contact__form-input"></textarea>
+                <textarea name="message" cols="30" rows="10" placeholder="Write me a message" class="contact__form-input" id="message" ></textarea>
               </div>
 
               <button class="button" type="submit"
-              onclick="document.getElementById('erase-content').value = ''"
               value="Send">Send Message</button>
             </div>
           </form>
@@ -592,5 +594,26 @@
     <script src="js/main.js"></script>
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      function mailInit() {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init('KjjW3SLf_BT7pYS2I');
+      }
+      
+      window.onload = function() {
+        mailInit();
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // generate a five digit number for the contact_number variable
+            this.contact_number.value = Math.random() * 100000 | 0;
+            // these IDs from the previous steps
+            emailjs.sendForm('service_nyzx2d5', 'contact-form', this)
+                .then(function() {
+                    console.log('SUCCESS!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
+        });
+      }</script>
   </body>
-</html>
+</html> 

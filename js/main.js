@@ -134,24 +134,38 @@ const sr = ScrollReveal({
 sr.reveal(`.home__data`);
 sr.reveal(`.home__handle`, {delay: 100});
 sr.reveal(`.home__social, .home__scroll`, {delay: 200, origin: 'bottom'});
-sr.reveal(`.home__img`, {delay: 200, origin: 'top'});
+sr.reveal(`.home__img`, {delay: 100, origin: 'left'});
 
-(function() {
-  // https://dashboard.emailjs.com/admin/account
-  emailjs.init('KjjW3SLf_BT7pYS2I');
-})();
+// function mailInit() {
+//   // https://dashboard.emailjs.com/admin/account
+//   emailjs.init('KjjW3SLf_BT7pYS2I');
+// }
 
-window.onload = function() {
-  document.getElementById('contact-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      // generate a five digit number for the contact_number variable
-      this.contact_number.value = Math.random() * 100000 | 0;
-      // these IDs from the previous steps
-      emailjs.sendForm('contact__service', 'contact-form', this)
-          .then(function() {
-              console.log('SUCCESS!');
-          }, function(error) {
-              console.log('FAILED...', error);
-          });
-  });
-}
+// function sendMail() {
+//   mailInit();
+//   let fullName = document.getElementById('name').value;
+//   let userEmail = document.getElementById('email').value;
+//   let userMessage = document.getElementById('message').value;
+  
+//   var contactParams = {
+//     from_name: fullName,
+//     from_email: userEmail,
+//     message: userMessage
+//   };
+//   emailjs.send('service_nyzx2d5', 'template_bl0fk16', contactParams)
+// }3
+
+// window.onload = function() {
+//   document.getElementById('contact-form').addEventListener('submit', function(event) {
+//       event.preventDefault();
+//       // generate a five digit number for the contact_number variable
+//       this.contact_number.value = Math.random() * 100000 | 0;
+//       // these IDs from the previous steps
+//       emailjs.sendForm('contact__service', 'contact-form', this)
+//           .then(function() {
+//               console.log('SUCCESS!');
+//           }, function(error) {
+//               console.log('FAILED...', error);
+//           });
+//   });
+// }
