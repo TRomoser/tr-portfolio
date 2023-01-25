@@ -528,7 +528,7 @@
 
             <form class="contact__form" id="contact-form">
               <div class="contact__form-div">
-                <input type="hidden" name="contact_number">
+                <input type="hidden" name="template_id" value="template_bl0fk16">
                 <label for="" class="contact__form-tag">From</label>
                 <input type="text" name="from_name" placeholder="Your name" class="contact__form-input"
                 id="name">
@@ -603,16 +603,16 @@
       window.onload = function() {
         mailInit();
         document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // generate a five digit number for the contact_number variable
-            this.contact_number.value = Math.random() * 100000 | 0;
-            // these IDs from the previous steps
-            emailjs.sendForm('service_nyzx2d5', 'contact-form', this)
-                .then(function() {
-                    console.log('SUCCESS!');
-                }, function(error) {
-                    console.log('FAILED...', error);
-                });
+          event.preventDefault();
+          // generate a five digit number for the contact_number variable
+          this.contact_number.value = Math.random() * 100000 | 0;
+          // these IDs from the previous steps
+          emailjs.sendForm('service_nyzx2d5', 'contact-form', this)
+            .then(function() {
+              console.log('SUCCESS!');
+            }, function(error) {
+              console.log('FAILED...', error);
+            });
         });
       }</script>
   </body>
