@@ -12,9 +12,19 @@
   <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-  <link rel="stylesheet" href="css/#">
+  <!-- emailJS -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init('z9TFqv33wVM-bfZLl');
+    })();
+  </script>
+  <!-- SweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- CSS -->
+  <link rel="stylesheet" href="css/#">
   <link rel="stylesheet" href="css/styles.css">
+</head>
   <title>TRomoser Portfolio</title>
 </head>
   <body>
@@ -528,27 +538,26 @@
 
             <form class="contact__form" id="contact-form">
               <div class="contact__form-div">
-                <input type="hidden" name="template_id" value="template_bl0fk16">
-                <label for="" class="contact__form-tag">From</label>
+                <label for="from_name" class="contact__form-tag">From</label>
                 <input type="text" name="from_name" placeholder="Your name" class="contact__form-input"
-                id="name">
+                id="name" required>
               </div>
 
               <div class="contact__form-div">
-                <label for="" class="contact__form-tag">Mail</label>
+                <label for="user_email" class="contact__form-tag">Mail</label>
                 <input type="email" name="user_email" placeholder="Your email address" class="contact__form-input"
-                id="email">
+                id="email" required>
               </div>
               
               <div class="contact__form-div contact__form-area">
-                <label for="" class="contact__form-tag">Message</label>
-                <textarea name="message" cols="30" rows="10" placeholder="Write me a message" class="contact__form-input" id="message" ></textarea>
+                <label for="message" class="contact__form-tag">Message</label>
+                <textarea name="message" rows="10" placeholder="Write me a message" class="contact__form-input" id="message" required></textarea>
               </div>
 
-              <button class="button" type="submit"
+              <button class="button" id="button" type="submit"
               value="Send">Send Message</button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </section>
     </main>
@@ -593,7 +602,7 @@
     <!-- Main JS -->
     <script src="js/main.js"></script>
     <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
       window.onload = function() {
         emailjs.init('1V1n13LZxeb9dT_6u');
@@ -609,6 +618,73 @@
               console.log('FAILED...', error);
             });
         });
-      }</script>
+      }</script> -->
+      <!-- <script type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> -->
+      <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.getElementById('button');
+        const modalButton = document.getElementById('modal-button');
+        const sendModal = document.getElementById('send-modal');
+        const swal = new Swal({
+          title: "Thanks!",
+          text: "Your message sent!",
+          icon: "success",
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+
+          btn.value = 'Sending...';
+
+          const serviceID = 'default_service';
+          const templateID = 'template_bl0fk16';
+
+          emailjs.sendForm(serviceID, templateID, this).then(() => {
+            btn.value = 'Send Email';
+            swal({
+              title: "Thanks!",
+              text: "Your message sent!",
+              icon: "success",
+            });
+            sendModal.classList.add('swal-overlay--show-modal');
+            sendModal.classList.remove('hidden');
+          }, (err) => {
+            btn.value = 'Send Email';
+            alert(JSON.stringify(err));
+          });
+        });
+
+        modalButton.addEventListener('click', function() {
+          sendModal.classList.remove('swal-overlay--show-modal');
+        });
+      });
+        </script>  
+      
+    <!-- Modal HTML -->
+    <div class="swal-overlay hidden" tabindex="-1" id="send-modal">
+      <div class="swal-modal" role="dialog" aria-modal="true">
+        <div class="swal-icon swal-icon--success">
+          <span class="swal-icon--success__line swal-icon--success__line--long"></span>
+          <span class="swal-icon--success__line swal-icon--success__line--tip"></span>
+
+          <div class="swal-icon--success__ring"></div>
+          <div class="swal-icon--success__hide-corners"></div>
+        </div>
+        <div class="swal-title" style="">Thanks!</div>
+        <div class="swal-text" style="">Your message sent!</div>
+        <div class="swal-footer">
+          <div class="swal-button-container">
+            <button class="swal-button swal-button--confirm" id="modal-button">OK</button>
+            <div class="swal-button__loader">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html> 
