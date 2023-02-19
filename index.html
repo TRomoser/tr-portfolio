@@ -20,7 +20,7 @@
     })();
   </script>
   <!-- SweetAlert -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="css/#">
   <link rel="stylesheet" href="css/styles.css">
@@ -624,42 +624,46 @@
       <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
         const btn = document.getElementById('button');
-        const modalButton = document.getElementById('modal-button');
+        const sendModalButton = document.getElementById('modal-button');
         const sendModal = document.getElementById('send-modal');
-        const swal = new Swal({
-          title: "Thanks!",
-          text: "Your message sent!",
-          icon: "success",
-        });
+        
+        
 
         document.getElementById('contact-form').addEventListener('submit', function(event) {
+          const form = document.getElementById('contact-form');
           event.preventDefault();
-
-          btn.value = 'Sending...';
-
+          sendModalButton.value = 'Sending...';
+          sendModalButton.disabled = true;
+          console.log(form.from_name.value, ' this is name', form.user_email.value, ' this is email', form.message.value, ' this is message')
           const serviceID = 'default_service';
           const templateID = 'template_bl0fk16';
-
-          emailjs.sendForm(serviceID, templateID, this).then(() => {
-            btn.value = 'Send Email';
-            swal({
-              title: "Thanks!",
-              text: "Your message sent!",
-              icon: "success",
+          emailjs.sendForm(serviceID, templateID, form).then(() => {
+            sendModalButton.value = 'Send Email';
+            sendModalButton.disabled = false;
+            const swal = new Swal({
+            title: "Thanks!",
+            text: "Your message sent!",
+            icon: "success",
             });
             sendModal.classList.add('swal-overlay--show-modal');
             sendModal.classList.remove('hidden');
-          }, (err) => {
-            btn.value = 'Send Email';
+            form.querySelectorAll('input, textarea').forEach(input => {
+    input.value = '';
+          });
+          }, 
+          (err) => {
+            sendModalButton.value = 'Send Email';
+            sendModalButton.disabled = false;
             alert(JSON.stringify(err));
           });
-        });
+        }
+        );
 
-        modalButton.addEventListener('click', function() {
-          sendModal.classList.remove('swal-overlay--show-modal');
+        sendModalButton.addEventListener('click', function() {
+        sendModal.classList.remove('swal-overlay--show-modal');
         });
       });
-        </script>  
+    </script>  
       
     <!-- Modal HTML -->
     <div class="swal-overlay hidden" tabindex="-1" id="send-modal">
