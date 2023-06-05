@@ -28,25 +28,25 @@ modalCloses.forEach((mc) => {
   })
 })
 
-// Mixitup filter portfolio
-// let mixerPortfolio = mixitup('.work_container', {
-//   selectors: {
-//       target: '.work_card'
-//   },
-//   animation: {
-//       duration: 300
-//   }
-// });
+// Mixitup filter 
+let mixerPortfolio = mixitup('.work_container', {
+  selectors: {
+      target: '.work_card'
+  },
+  animation: {
+      duration: 300
+  }
+});
 
 // Link active work
-// const linkWork = document.querySelectorAll('.work__item');
+const linkWork = document.querySelectorAll('.work__item');
 
-// function activeWork() {
-//   if(linkWork) {
-//     linkWork.forEach(l => l.classList.remove('active-work'));
-//     this.classList.add('active-work');
-//   }
-// }
+function activeWork() {
+  if(linkWork) {
+    linkWork.forEach(l => l.classList.remove('active-work'));
+    this.classList.add('active-work');
+  }
+}
 
 // linkWork.forEach(l => l.addEventListener('click', activeWork));
 
